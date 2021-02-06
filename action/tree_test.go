@@ -2,31 +2,27 @@ package action
 
 import (
 	"fmt"
+	"github.com/alexpfx/go_action/readyactions/linux"
 	"testing"
 )
 
 func TestActionTree_Show(t *testing.T) {
-	ls := Binary{
-		CmdPath: "ls",
-		Name:    "",
-		FixArgs: []string{},
-	}
-
+	
 	res, err := NewFzfTree("selecione o comando", []Action{
 		{
-			Name:   "ls -la",
-			Binary: ls,
+			Name:   "echo ",
+			Binary: linux.Echo,
 			
-			Args:   []string{"-la"},
+			Args: []string{"alo"},
 		},
 		{
-			Name:   "ls -l",
-			Binary: ls,
+			Name:   "ls -la",
+			Binary: linux.Ls,
 			Args:   []string{"-la"},
 		},
 	}).Show()
 	if err != nil {
 		_ = fmt.Errorf(err.Error())
 	}
-	fmt.Println("selected: ",res.Selected().Name)
+	fmt.Println("selected: ", res.Selected().Name)
 }
