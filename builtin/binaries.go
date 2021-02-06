@@ -1,4 +1,4 @@
-package linux
+package builtin
 
 import "github.com/alexpfx/go_action/action"
 
@@ -22,6 +22,18 @@ var (
 		CmdPath: "ls",
 		Name:    "ls",
 		FixArgs: nil,
+	}
+	
+	Jq = &action.Binary{
+		CmdPath: "jq",
+		Name:    "jq JSON processor",
+		FixArgs: []string{"--tab"},
+	}
+	
+	Xsel = &action.Binary{
+		CmdPath: "xsel",
+		Name:    "xel",
+		FixArgs: []string{"-b"},
 	}
 	
 	

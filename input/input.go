@@ -28,7 +28,7 @@ func (r RofiResolver) Resolve(config Config) ([]string, error) {
 type ClipResolver struct {
 }
 
-func (c ClipResolver) Resolve(config Config) ([]string, error) {
+func (c ClipResolver) Resolve(config *Config) ([]string, error) {
 	
 	clipStr, _ := clipboard.ReadAll()
 	splited := strings.Split(clipStr, config.ArgSep)
