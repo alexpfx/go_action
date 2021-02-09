@@ -1,36 +1,34 @@
-package builtin
-
-import "github.com/alexpfx/go_action/action"
+package binary
 
 var (
-	Bat = action.Binary{
+	Bat = &Binary{
 		CmdPath: "/usr/bin/bat",
 		Name:    "bat",
 	}
 	
-	Echo = action.Binary{
+	Echo = &Binary{
 		CmdPath: "echo",
 		Name:    "echo -e",
 		FixArgs: []string{"-e"},
 	}
-	Sort = action.Binary{
+	Sort = &Binary{
 		CmdPath: "sort",
 		Name:    "sort",
 	}
 	
-	Ls = action.Binary{
+	Ls = &Binary{
 		CmdPath: "ls",
 		Name:    "ls",
 		FixArgs: nil,
 	}
 	
-	Jq = action.Binary{
+	Jq = &Binary{
 		CmdPath: "jq",
 		Name:    "jq JSON processor",
 		FixArgs: []string{"--tab"},
 	}
 	
-	Xsel = action.Binary{
+	Xsel = &Binary{
 		CmdPath: "xsel",
 		Name:    "xel",
 		FixArgs: []string{"-b"},

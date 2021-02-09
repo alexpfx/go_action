@@ -1,4 +1,4 @@
-package action
+package binary
 
 
 type Binary struct {
