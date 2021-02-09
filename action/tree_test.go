@@ -2,7 +2,7 @@ package action
 
 import (
 	"fmt"
-	"github.com/alexpfx/go_action/internal/binaries"
+	"github.com/alexpfx/go_action/builtin"
 	
 	"testing"
 )
@@ -12,13 +12,13 @@ func TestActionTree_Show(t *testing.T) {
 	res, err := NewFzfTree("selecione o comando", []Action{
 		{
 			Name:   "echo ",
-			Binary: binaries.Echo,
+			Binary: builtin.Echo,
 			
 			Args: []string{"alo"},
 		},
 		{
 			Name:   "ls -la",
-			Binary: binaries.Ls,
+			Binary: builtin.Ls,
 			Args:   []string{"-la"},
 		},
 	}).Show()

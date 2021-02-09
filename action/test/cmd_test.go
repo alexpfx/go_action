@@ -3,7 +3,7 @@ package test
 import (
 	"fmt"
 	"github.com/alexpfx/go_action/action"
-	"github.com/alexpfx/go_action/internal/binaries"
+	"github.com/alexpfx/go_action/builtin"
 	
 	"testing"
 )
@@ -11,10 +11,10 @@ import (
 func echoAndSort(input string) *action.Action {
 	return &action.Action{
 		Name:   "echo | sort ",
-		Binary: binaries.Echo,
+		Binary: builtin.Echo,
 		
 		Next: &action.Action{
-			Binary:        binaries.Sort,
+			Binary:        builtin.Sort,
 			InputFromPipe: true,
 		},
 		Args: []string{
@@ -27,10 +27,10 @@ func echoAndSort(input string) *action.Action {
 func echoAndLs(input string) *action.Action {
 	return &action.Action{
 		Name:   "echo > ls",
-		Binary: binaries.Echo,
+		Binary: builtin.Echo,
 		Args:   []string{input},
 		Next: &action.Action{
-			Binary: binaries.Ls,
+			Binary: builtin.Ls,
 		},
 	}
 }

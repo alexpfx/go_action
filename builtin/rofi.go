@@ -1,4 +1,4 @@
-package inputs
+package builtin
 
 import "github.com/alexpfx/go_action/input"
 

@@ -1,4 +1,4 @@
-package inputs
+package builtin
 
 /*func TestRofiInputReader_Read(t *testing.T) {
 	tests := []struct {

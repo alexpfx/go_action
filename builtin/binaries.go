@@ -1,4 +1,4 @@
-package binaries
+package builtin
 
 import "github.com/alexpfx/go_action/action/binary"
 
