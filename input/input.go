@@ -1,45 +1,14 @@
 package input
 
-import (
-	"github.com/atotto/clipboard"
-	"strings"
-)
+import "io"
 
 type Resolver interface {
-	Resolve(inputs *Config) ([]string, error)
+	Resolve(inputs *ResolverConfig) ([]string, error)
 }
 
-type RofiResolver struct {
-}
-
-type Config struct {
+type ResolverConfig struct {
 	Resolver Resolver
 	Keys     []string
 	ArgSep   string
-}
-
-func (r RofiResolver) Resolve(config Config) ([]string, error) {
-	
-	res := make([]string, 0)
-	
-	return res, nil
-}
-
-type ClipResolver struct {
-}
-
-func (c ClipResolver) Resolve(config *Config) ([]string, error) {
-	
-	clipStr, _ := clipboard.ReadAll()
-	splited := strings.Split(clipStr, config.ArgSep)
-	
-	res := make([]string, 0)
-	
-	for i, s := range splited {
-		if i < len(config.Keys) {
-			res = append(res, config.Keys[i])
-		}
-		res = append(res, s)
-	}
-	return res, nil
+	Reader io.Reader
 }

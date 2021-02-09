@@ -2,7 +2,7 @@ package action
 
 import (
 	"github.com/alexpfx/go_action/action/binary"
-	"github.com/alexpfx/go_action/input"
+	input2 "github.com/alexpfx/go_action/input"
 	"log"
 	
 	"io"
@@ -18,7 +18,7 @@ type Action struct {
 	Name        string
 	Binary      *binary.Binary
 	Args        []string
-	InputConfig *input.Config
+	InputConfig *input2.ResolverConfig
 	output      []byte
 	
 	
