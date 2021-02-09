@@ -5,17 +5,15 @@ import "fmt"
 type test struct {
 	str string
 	
-	slic [] string
-	
+	slic []string
 }
 
-func (t test) testRun()  {
+func (t test) testRun() {
 	
 	fmt.Println(t.str)
 }
 
-
-func main()  {
+func main() {
 	myslice := make([]string, 0)
 	myslice = append(myslice, "oi")
 	var t test

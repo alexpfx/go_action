@@ -10,5 +10,5 @@ type ResolverConfig struct {
 	Resolver Resolver
 	Keys     []string
 	ArgSep   string
-	Reader io.Reader
+	Reader   io.Reader
 }

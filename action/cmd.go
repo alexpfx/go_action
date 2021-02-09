@@ -2,7 +2,7 @@ package action
 
 import (
 	"github.com/alexpfx/go_action/action/binary"
-	input2 "github.com/alexpfx/go_action/input"
+	"github.com/alexpfx/go_action/input"
 	"log"
 	
 	"io"
@@ -18,17 +18,14 @@ type Action struct {
 	Name        string
 	Binary      *binary.Binary
 	Args        []string
-	InputConfig *input2.ResolverConfig
+	InputConfig *input.ResolverConfig
 	output      []byte
-	
 	
 	InputFromPipe bool
 	Next          *Action
 	Converter     func([]byte) ([]byte, error)
 	prev          *Action
 }
-
-
 
 type Actual struct {
 	action    *Action
@@ -44,9 +41,8 @@ func (c Prev) Action() *Action {
 }
 
 type Prev struct {
-	action    *Action
+	action *Action
 }
-
 
 func (c Actual) Run() (output []byte, err error) {
 	return c.action.Run()

@@ -65,7 +65,6 @@ func (t tree) Show() (Result, error) {
 	var selected *Action
 	selected = getSelected(t, out)
 	
-	
 	return result{
 		selected: selected,
 		out:      out,

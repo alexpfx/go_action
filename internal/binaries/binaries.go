@@ -35,8 +35,4 @@ var (
 		Name:    "xel",
 		FixArgs: []string{"-b"},
 	}
-	
-
-	
-	
 )
