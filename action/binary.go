@@ -1,4 +1,4 @@
-package binary
+package action
 
 type Binary struct {
 	CmdPath string

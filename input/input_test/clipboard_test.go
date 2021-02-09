@@ -1,4 +1,4 @@
-package builtin
+package action_test
 
 import (
 	"github.com/alexpfx/go_action/input"
@@ -8,7 +8,7 @@ import (
 )
 
 func Test_ClipResolver(t *testing.T) {
-	resolver := ClipResolver{}
+	resolver := input.ClipResolver{}
 	var config *input.ResolverConfig
 	
 	config = &input.ResolverConfig{

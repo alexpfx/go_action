@@ -1,18 +1,17 @@
-package builtin
+package input
 
 import (
-	"github.com/alexpfx/go_action/input"
+	"github.com/alexpfx/go_action/internal/util"
 	"github.com/atotto/clipboard"
-	"strings"
 )
 
 type ClipResolver struct {
 }
 
-func (c ClipResolver) Resolve(config *input.ResolverConfig) ([]string, error) {
+func (c ClipResolver) Resolve(config *ResolverConfig) ([]string, error) {
 	
 	clipStr, _ := clipboard.ReadAll()
-	splited := strings.Split(clipStr, config.ArgSep)
+	splited := util.SplitSep(clipStr, config.ArgSep)
 	
 	res := make([]string, 0)
 	

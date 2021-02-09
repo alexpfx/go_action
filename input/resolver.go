@@ -11,4 +11,5 @@ type ResolverConfig struct {
 	Keys     []string
 	ArgSep   string
 	Reader   io.Reader
+	Prompt   string
 }

@@ -3,7 +3,6 @@ package action
 import (
 	"fmt"
 	"github.com/alexpfx/go_menus/menu"
-	"github.com/alexpfx/go_menus/menu/fzf"
 	"log"
 	"strconv"
 	"strings"
@@ -11,19 +10,6 @@ import (
 
 const sep = ";"
 
-func NewFzfTree(prompt string, actions []Action) Tree {
-	
-	fzfMenu := fzf.NewBuilder().Prompt("selecione").
-		AutoSelect(true).
-		Prompt(prompt).(fzf.Builder).
-		WithNth("2", sep).Build()
-	
-	return tree{
-		menu:    fzfMenu,
-		actions: actions,
-	}
-	
-}
 
 type Tree interface {
 	Show() (Result, error)

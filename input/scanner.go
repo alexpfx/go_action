@@ -1,15 +1,14 @@
-package builtin
+package input
 
 import (
 	"bufio"
-	"github.com/alexpfx/go_action/input"
 	"os"
 )
 
-type LinuxReadInput struct {
+type ScannerResolver struct {
 }
 
-func (f LinuxReadInput) Resolve(config *input.ResolverConfig) ([]string, error) {
+func (f ScannerResolver) Resolve(config *ResolverConfig) ([]string, error) {
 	read := make([]string, 0)
 	
 	var scanner *bufio.Scanner

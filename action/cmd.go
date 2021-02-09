@@ -1,7 +1,6 @@
 package action
 
 import (
-	"github.com/alexpfx/go_action/action/binary"
 	"github.com/alexpfx/go_action/input"
 	"log"
 	
@@ -16,7 +15,7 @@ type Runnable interface {
 
 type Action struct {
 	Name        string
-	Binary      *binary.Binary
+	Binary      *Binary
 	Args        []string
 	InputConfig *input.ResolverConfig
 	output      []byte

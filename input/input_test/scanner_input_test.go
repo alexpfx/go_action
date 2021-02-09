@@ -1,4 +1,4 @@
-package builtin
+package action_test
 
 import (
 	"github.com/alexpfx/go_action/input"
@@ -8,7 +8,7 @@ import (
 )
 
 func Test_LinuxRead(t *testing.T) {
-	resolver := LinuxReadInput{}
+	resolver := input.ScannerResolver{}
 	var config *input.ResolverConfig
 	
 	config = &input.ResolverConfig{
