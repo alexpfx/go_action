@@ -15,7 +15,7 @@ type Runnable interface {
 
 type Action struct {
 	Name        string
-	Binary      *Binary
+	Binary      Binary
 	Args        []string
 	InputConfig *input.Config
 	output      []byte

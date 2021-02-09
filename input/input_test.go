@@ -10,13 +10,13 @@ import (
 
 func TestRofiInputReader_Read(t *testing.T) {
 	tests := []struct {
-		inputLIst   Config
+		inputList   *Config
 		readValues  string
 		expected    []string
 		errExpected string
 	}{
 		{
-			inputLIst: Config{
+			inputList: &Config{
 				ArgSep: " ",
 				Keys:   nil,
 			},
@@ -24,7 +24,8 @@ func TestRofiInputReader_Read(t *testing.T) {
 			expected:    []string{"a", "b", "c", "d"},
 			errExpected: "",
 		},
-		{inputLIst: Config{
+		{
+			inputList: &Config{
 			Keys:   []string{"-t", "-x"},
 			ArgSep: "|",
 		}, readValues: "a|b|123", expected: []string{"-t", "a", "-x", "b", "123"}},
@@ -34,7 +35,7 @@ func TestRofiInputReader_Read(t *testing.T) {
 
 	for _, r := range tests {
 		_ = clipboard.WriteAll(r.readValues)
-		res, err := cir.Resolve(r.inputLIst)
+		res, err := cir.Resolve(r.inputList)
 
 		if r.errExpected == "" {
 			assert.Equal(t, r.expected, res)
@@ -49,13 +50,13 @@ func TestRofiInputReader_Read(t *testing.T) {
 
 func TestClipInputReader_Read(t *testing.T) {
 	tests := []struct {
-		inputLIst   Config
+		inputLIst   *Config
 		readValues  string
 		expected    []string
 		errExpected string
 	}{
 		{
-			inputLIst: Config{
+			inputLIst: &Config{
 				ArgSep: " ",
 				Keys:   nil,
 			},
@@ -63,7 +64,7 @@ func TestClipInputReader_Read(t *testing.T) {
 			expected:    []string{"a", "b", "c", "d"},
 			errExpected: "",
 		},
-		{inputLIst: Config{
+		{inputLIst: &Config{
 			Keys:   []string{"-t", "-x"},
 			ArgSep: "|",
 		}, readValues: "a|b|123", expected: []string{"-t", "a", "-x", "b", "123"}},
