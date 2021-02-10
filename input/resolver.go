@@ -1,6 +1,9 @@
 package input
 
-import "io"
+import (
+	"io"
+	"regexp"
+)
 
 type Resolver interface {
 	Resolve(inputs *ResolverConfig) ([]string, error)
@@ -12,4 +15,6 @@ type ResolverConfig struct {
 	ArgSep   string
 	Reader   io.Reader
 	Prompt   string
+	searchPattern regexp.Regexp
+	
 }

@@ -2,6 +2,7 @@ package action
 
 import (
 	"fmt"
+	"github.com/alexpfx/go_action/internal/util"
 	"github.com/alexpfx/go_menus/menu"
 	"log"
 	"strconv"
@@ -12,33 +13,16 @@ const sep = ";"
 
 
 type Tree interface {
-	Show() (Result, error)
+	Show() (*Action, bool, error)
 }
 
-type Result interface {
-	Out() string
-	Selected() *Action
-}
-
-type result struct {
-	out      string
-	selected *Action
-}
-
-func (r result) Out() string {
-	return r.out
-}
-
-func (r result) Selected() *Action {
-	return r.selected
-}
 
 type tree struct {
 	menu    menu.Menu
 	actions []Action
 }
 
-func (t tree) Show() (Result, error) {
+func (t tree) Show() (*Action, bool, error) {
 	var sb strings.Builder
 	for i, action := range t.actions {
 		sb.WriteString(fmt.Sprintf("%d;%s\n", i, action.Name))
@@ -46,35 +30,30 @@ func (t tree) Show() (Result, error) {
 	
 	out, err := t.menu.Run(sb.String())
 	if err != nil {
-		return nil, err
+		return nil, false, err
 	}
-	var selected *Action
-	selected = getSelected(t, out)
 	
-	return result{
-		selected: selected,
-		out:      out,
-		
-	}, err
+	selected, found := getSelected(t, out)
+	
+	return selected, found, err
 	
 }
 
-func getSelected(t tree, out string) *Action {
+func getSelected(t tree, out string) (*Action, bool) {
 	if len(t.actions) == 0 || out == "" {
-		return nil
+		return nil, false
 	}
-	strIndex := strings.Split(out, sep)
+	strIndex := util.SplitSep(out, sep)
 	if len(strIndex) == 0 {
-		return nil
+		return nil, false
 	}
 	index, err := strconv.Atoi(strIndex[0])
-	
 	if err != nil {
-		log.Fatal(err)
+		return nil, false
 	}
 	if index > len(t.actions) {
 		log.Fatalf("erro ao obter selecionado: indice: %d size: %d", index, len(t.actions))
 	}
 	
-	return &t.actions[index]
+	return &t.actions[index], true
 }

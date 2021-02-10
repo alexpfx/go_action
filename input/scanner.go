@@ -2,6 +2,7 @@ package input
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 )
 
@@ -19,18 +20,15 @@ func (f ScannerResolver) Resolve(config *ResolverConfig) ([]string, error) {
 		scanner = bufio.NewScanner(os.Stdin)
 	}
 	
-	for {
-		scanner.Scan()
-		
-		text := scanner.Text()
-		
-		if len(text) != 0 {
-			read = append(read, text)
-		} else {
-			break
-		}
-		
+	fmt.Printf("%s: ", config.Prompt)
+	scanner.Scan()
+	
+	text := scanner.Text()
+	
+	if len(text) != 0 {
+		read = append(read, text)
 	}
+	
 	res := make([]string, 0)
 	
 	for i, s := range read {
